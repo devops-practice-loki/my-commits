@@ -1,0 +1,5 @@
+#!/bin/bash
+echo "=== SYSTEM STATUS ==="
+df -h | awk '$NF=="/"{printf "Disk Usage: %s\n", $5}'
+free -m | awk 'NR==2{printf "Memory Usage: %s%%\n", int($3/$2*100)}'
+uptime | awk '{print "Load Average:", $(NF-2), $(NF-1), $NF}'
